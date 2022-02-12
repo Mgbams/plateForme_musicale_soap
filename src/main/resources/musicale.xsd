@@ -1,0 +1,47 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://spring.io/guides/gs-producing-web-service"
+	targetNamespace="http://spring.io/guides/gs-producing-web-service"
+	elementFormDefault="qualified">
+
+	<xs:element name="getMusicaleRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="name" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getMusicaleResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="playlist" type="tns:playlist" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="playlist">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="dureeTotal" type="xs:int" />
+			<xs:element name="morceaux" type="tns:morceau" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="morceau">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" />
+			<xs:element name="dureeTitre" type="xs:int" />
+			<xs:element name="genreMusicale" type="tns:genreMusical" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="genreMusical">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Rock" />
+			<xs:enumeration value="Pop" />
+			<xs:enumeration value="Classique" />
+			<xs:enumeration value="Rapp" />
+			<xs:enumeration value="Jazz" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
